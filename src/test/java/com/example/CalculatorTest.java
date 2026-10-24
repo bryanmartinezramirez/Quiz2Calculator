@@ -1,38 +1,34 @@
 package com.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.Test;
 
-/**
- * Unit test for simple App.
- */
-public class CalculatorTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public CalculatorTest( String testName )
-    {
-        super( testName );
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class CalculatorTest {
+
+    Calculator calculator = new Calculator();
+
+    @Test
+    public void testSum() {
+        int expected = 3;
+        int actual = calculator.sum(1, 2);
+
+        assertEquals(expected, actual);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( CalculatorTest.class );
+    @Test
+    public void testSumNegative() {
+        int expected = -7;
+        int actual = calculator.sum(-3, -4);
+
+        assertEquals(expected, actual);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void testSumZero() {
+        int expected = 0;
+        int actual = calculator.sum(0, 0);
+
+        assertEquals(expected, actual);
     }
 }
